@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet" defer>
+        <!-- Scripts -->
+
+        <script src="{{ mix('js/app.js') }}" defer></script>
+    </head>
+    <body >
+        <div style="padding-left:10% ">
+        <table style="background-color:lightgray; " >
+            <thead>
+              <tr>
+                <th >nombre</th>
+                <th>Correo</th>
+                <th>Creacion</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($usuarios as $usuario)
+                  <tr>
+                  <td>{!!Purify::clean($usuario->name)!!}</td>
+                  <td>{{$usuario->email}}</td>
+                  <td>{{$usuario->created_at}}</td>
+                  <td></td>
+                  </tr>
+
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+    </body>
+</html>
